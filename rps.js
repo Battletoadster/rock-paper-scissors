@@ -26,10 +26,14 @@ function playRound(humanChoice, computerChoice) {
     } else if ((lowerComputerChoice === "rock" && lowerHumanChoice === "scissors")
         || (lowerComputerChoice === "paper" && lowerHumanChoice === "rock")
         || (lowerComputerChoice === "scissors" && lowerHumanChoice === "paper")) {
-        console.log(`You lose! ${lowerComputerChoice.charAt(0).toUpperCase() + lowerComputerChoice.slice(1)} beats ${lowerHumanChoice}!`);
+        console.log(`You lose! 
+        ${lowerComputerChoice.charAt(0).toUpperCase() +
+        lowerComputerChoice.slice(1)} beats ${lowerHumanChoice}!`);
         computerScore++;
     } else {
-        console.log(`You win! ${lowerHumanChoice.charAt(0).toUpperCase() + lowerHumanChoice.slice(1)} beats ${lowerComputerChoice}!`);
+        console.log(`You win! 
+            ${lowerHumanChoice.charAt(0).toUpperCase() + 
+            lowerHumanChoice.slice(1)} beats ${lowerComputerChoice}!`);
         playerScore++;
     }
 }
