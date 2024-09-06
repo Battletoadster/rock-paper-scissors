@@ -1,6 +1,7 @@
 const btns = document.querySelectorAll("button");
 const playerScoreDisp = document.getElementsByName("player-score")[0];
 const computerScoreDisp = document.getElementsByName("computer-score")[0];
+const resultText = document.querySelector(".round-result")
 
 btns.forEach((button) => {
     button.addEventListener("click", () => {
@@ -29,17 +30,17 @@ function playRound(humanChoice, computerChoice) {
     let lowerComputerChoice = computerChoice.toLowerCase();
 
     if (lowerComputerChoice === lowerHumanChoice) {
-        console.log(`Tie! You both chose ${lowerComputerChoice}`)
+        resultText.textContent = `Tie! You both chose ${lowerComputerChoice}`;
     } else if ((lowerComputerChoice === "rock" && lowerHumanChoice === "scissors")
         || (lowerComputerChoice === "paper" && lowerHumanChoice === "rock")
         || (lowerComputerChoice === "scissors" && lowerHumanChoice === "paper")) {
-        console.log(`You lose! ${lowerComputerChoice.charAt(0).toUpperCase() +
-            lowerComputerChoice.slice(1)} beats ${lowerHumanChoice}!`);
+        resultText.textContent = `You lose! ${lowerComputerChoice.charAt(0).toUpperCase() +
+            lowerComputerChoice.slice(1)} beats ${lowerHumanChoice}!`;
         computerScore++;
         computerScoreDisp.textContent = computerScore;
     } else {
-        console.log(`You win! ${lowerHumanChoice.charAt(0).toUpperCase() +
-            lowerHumanChoice.slice(1)} beats ${lowerComputerChoice}!`);
+        resultText.textContent = `You win! ${lowerHumanChoice.charAt(0).toUpperCase() +
+            lowerHumanChoice.slice(1)} beats ${lowerComputerChoice}!`;
         playerScore++;
         playerScoreDisp.textContent = playerScore;
     }
@@ -66,6 +67,7 @@ function resetGame() {
     round = 0;
     playerScore = 0;
     computerScore = 0;
-    computerScoreDisp.textContent = computerScore;
-    playerScoreDisp.textContent = playerScore;
+    computerScoreDisp.textContent = 0;
+    playerScoreDisp.textContent = 0;
+    resultText.textContent = "Another game?"
 }
