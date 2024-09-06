@@ -1,0 +1,36 @@
+*{
+    outline: 1px solid pink;
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 30vh;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.player-result,
+.computer-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>RPS App</title>
+    <link rel="stylesheet" href="styles.css">
+
 <body>
+    <div class="game">
+        <div class="input">
+            <h1>Make Your Choice</h1>
+            <div class="btn-container">
+                <button class="rock-btn" value="rock">Rock</button>
+                <button class="paper-btn" value="paper">Paper</button>
+                <button class="scissors-btn" value="scissors">Scissors</button>
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="player-result">
+                <p>Player</p>
+                <p name="player-score">0</p>
+            </div>
+            <div class="computer-result">
+                <p>Computer</p>
+                <p name="computer-score">0</p>
+            </div>
+        </div>
+    </div>
+
     <script src="rps.js">
-        
+
     </script>
 </body>
+
 </html>
