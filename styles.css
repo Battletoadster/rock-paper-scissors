@@ -1,7 +1,3 @@
-*{
-    outline: 1px solid pink;
-}
-
 .game{
     display: flex;
     flex-direction: column;

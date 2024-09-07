@@ -1,9 +1,10 @@
-const btns = document.querySelectorAll("button");
+const weaponBtns = document.querySelectorAll("button");
 const playerScoreDisp = document.getElementsByName("player-score")[0];
 const computerScoreDisp = document.getElementsByName("computer-score")[0];
 const resultText = document.querySelector(".round-result")
+const resetBtn = document.createElement("button");
 
-btns.forEach((button) => {
+weaponBtns.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(button.value, getComputerChoice());
     })
@@ -53,15 +54,33 @@ function playRound(humanChoice, computerChoice) {
 
 function endGame() {
     if (playerScore === computerScore) {
-        console.log("It's a tie!");
+        resultText.textContent = "It's a tie!";
     } else if (playerScore > computerScore) {
-        console.log("You win!")
+        resultText.textContent = "You win!";
     } else {
-        console.log('You lose!')
+        resultText.textContent = 'You lose!';
     }
-    console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
-    resetGame();
+    toggleWeaponButtons(weaponBtns);
+    createResetButton();
 }
+
+function toggleWeaponButtons(btns) {
+    for (let btn of btns) {
+        if(!btn.disabled){
+            btn.disabled = true;
+        } else {
+            btn.disabled = false;
+        }
+    }
+}
+
+
+function createResetButton() {
+    resetBtn.textContent = "Reset";
+    resetBtn.addEventListener("click", resetGame);
+    resultText.after(resetBtn);
+}
+
 
 function resetGame() {
     round = 0;
@@ -69,5 +88,7 @@ function resetGame() {
     computerScore = 0;
     computerScoreDisp.textContent = 0;
     playerScoreDisp.textContent = 0;
-    resultText.textContent = "Another game?"
+    resultText.textContent = "Hmm, what to choose..."
+    resetBtn.remove();
+    toggleWeaponButtons(weaponBtns);
 }
