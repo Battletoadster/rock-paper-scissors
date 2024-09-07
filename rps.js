@@ -3,6 +3,7 @@ const playerScoreDisp = document.getElementsByName("player-score")[0];
 const computerScoreDisp = document.getElementsByName("computer-score")[0];
 const resultText = document.querySelector(".round-result")
 const resetBtn = document.createElement("button");
+const game = document.querySelector(".game");
 
 weaponBtns.forEach((button) => {
     button.addEventListener("click", () => {
@@ -83,7 +84,7 @@ function toggleWeaponButtons(btns) {
 function createResetButton() {
     resetBtn.textContent = "Reset";
     resetBtn.addEventListener("click", resetGame);
-    resultText.after(resetBtn);
+    game.after(resetBtn);
 }
 
 
