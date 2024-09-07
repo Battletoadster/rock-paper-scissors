@@ -7,8 +7,7 @@ const resetBtn = document.createElement("button");
 weaponBtns.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(button.value, getComputerChoice());
-    })
-
+    });
 });
 
 let playerScore = 0;
@@ -32,16 +31,19 @@ function playRound(humanChoice, computerChoice) {
 
     if (lowerComputerChoice === lowerHumanChoice) {
         resultText.textContent = `Tie! You both chose ${lowerComputerChoice}`;
+        resultText.style.color = "black";
     } else if ((lowerComputerChoice === "rock" && lowerHumanChoice === "scissors")
         || (lowerComputerChoice === "paper" && lowerHumanChoice === "rock")
         || (lowerComputerChoice === "scissors" && lowerHumanChoice === "paper")) {
         resultText.textContent = `You lose! ${lowerComputerChoice.charAt(0).toUpperCase() +
             lowerComputerChoice.slice(1)} beats ${lowerHumanChoice}!`;
+        resultText.style.color = "#f44336";
         computerScore++;
         computerScoreDisp.textContent = computerScore;
     } else {
         resultText.textContent = `You win! ${lowerHumanChoice.charAt(0).toUpperCase() +
             lowerHumanChoice.slice(1)} beats ${lowerComputerChoice}!`;
+        resultText.style.color = "#04AA6D";
         playerScore++;
         playerScoreDisp.textContent = playerScore;
     }
@@ -55,10 +57,13 @@ function playRound(humanChoice, computerChoice) {
 function endGame() {
     if (playerScore === computerScore) {
         resultText.textContent = "It's a tie!";
+        resultText.style.color = "black";
     } else if (playerScore > computerScore) {
         resultText.textContent = "You win!";
+        resultText.style.color = "#04AA6D";
     } else {
         resultText.textContent = 'You lose!';
+        resultText.style.color = "#f44336";
     }
     toggleWeaponButtons(weaponBtns);
     createResetButton();
@@ -66,7 +71,7 @@ function endGame() {
 
 function toggleWeaponButtons(btns) {
     for (let btn of btns) {
-        if(!btn.disabled){
+        if (!btn.disabled) {
             btn.disabled = true;
         } else {
             btn.disabled = false;
@@ -91,4 +96,5 @@ function resetGame() {
     resultText.textContent = "Hmm, what to choose..."
     resetBtn.remove();
     toggleWeaponButtons(weaponBtns);
+    resultText.style.color = "black";
 }
